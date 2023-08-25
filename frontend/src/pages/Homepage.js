@@ -1,21 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { response } from 'express';
+import Employee from '../components/Employee';
+
 function Homepage() {
 
     const [employees, setEmployees] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
+
+
+    useEffect(() => {
+        getEmployees();
+    }, []);
+
 
     const getEmployees = async () => {
-        await axios.get('http://localhost:3456/employees')
-            .then((response) => {
-                console.log(response.data)
-            })
-            .catch((err) => console.log(err))
+
+        try {
+            const response = await axios.get('http://localhost:3456/employees')
+            // const employeeArray = Object.values(response)
+            const employeeArray = response.data.employee
+            setEmployees(employeeArray)
+
+        } catch (error) {
+            console.log(error)
+
+        }
+
     }
+
+
+
     return (
         <>
-
+            <div>
+                {
+                    employees.map((employee) => {
+                        return (
+                            <Employee employee={employee} />
+                        )
+                    })
+                }
+            </div>
         </>
     )
 }

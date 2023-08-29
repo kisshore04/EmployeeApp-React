@@ -3,7 +3,7 @@
 .homepage-container {
     background-color: #f4f4f4;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
   }
   
   h1 {
@@ -16,3 +16,33 @@
     display: flex;
     justify-content: space-between;
   }
+
+.feature-container {
+  display: flex;
+  justify-content: space-between;
+}
+.search-bar {
+  width: 75%;
+  height: 35%;
+  margin-right: 25px;
+  padding: 10px;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
+}
+
+.sort-button{
+  width: 50%;
+  height: 65%;
+  font-weight: bold;
+  /* color: #228B22; */
+  background-color: #228B22;
+}

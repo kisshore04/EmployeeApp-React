@@ -1,43 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import Employee from "../components/Employee";
-
-// function Homepage() {
-//   const [employees, setEmployees] = useState([]);
-//   // const [isLoading, setIsLoading] = useState(false);
-
-//   useEffect(() => {
-//     getEmployees();
-//   }, []);
-
-//   const getEmployees = async () => {
-//     try {
-//       const response = await axios.get("http://localhost:3456/employees");
-//       // const employeeArray = Object.values(response)
-//       const employeeArray = response.data.employee;
-//       setEmployees(employeeArray);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       {employees.map((employee) => {
-//         return (
-//           <Employee
-//             employee={employee}
-//             getEmployees={getEmployees}
-//             key={employee.id}
-//           />
-//         );
-//       })}
-//     </div>
-//   );
-// }
-
-// export default Homepage;
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Employee from "../components/Employee";
@@ -78,12 +38,11 @@ function Homepage() {
 
     // Update the employees state with the sorted array
     setEmployees(sorted);
-    setSortedEmployees(sorted)
+    setSortedEmployees(sorted);
 
     // Toggle the sort order between ascending and descending
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
-
 
   return (
     <div className="homepage-container">
@@ -97,21 +56,13 @@ function Homepage() {
             onChange={(e) => setSearch(e.target.value)}
             className="search-bar"
           />
-          <button onClick={handleSort} className="sort-button">Sort by Name</button>
+          <button onClick={handleSort} className="sort-button">
+            Sort by Name
+          </button>
         </div>
       </div>
-      {/* {employees.filter((employee) => {
-        return search.trim() === ''
-          ? employee
-          : employee.name.toLowerCase().includes(search.toLowerCase());
-      }).map((employee) => (
-        <Employee
-          employee={employee}
-          getEmployees={getEmployees}
-          key={employee.id}
-        />
-      ))} */}
-      {(search ? sortedEmployees : employees)
+      {/* deploying the search functionality right before we list out the data  */}
+      {employees
         .filter((employee) => {
           return search.trim() === ""
             ? true

@@ -62,6 +62,14 @@ function Homepage() {
         </div>
       </div>
       {/* deploying the search functionality right before we list out the data  */}
+      {/* Error correction note */}
+      {/* I was using a unwanted ternary operator which made me to not show the actual employees related to my search box!! */}
+      {/* {(search ? sortedEmployees : employees)
+        .filter((employee) => {
+          return search.trim() === ""
+            ? true
+            : employee.name.toLowerCase().includes(search.toLowerCase());
+        }) */}
       {employees
         .filter((employee) => {
           return search.trim() === ""
